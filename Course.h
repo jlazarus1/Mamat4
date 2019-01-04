@@ -15,11 +15,15 @@ char *Name;
 int Num_Of_HW;
 float HW_weight;
 int Exam_Grade;
+int Size_Of_Name;
 int *HW_Grades;
 
 public:
 
     Course(int Course_Num, char Course_Name, int Num_Of_HW, int HW_Weight);
+
+    Course(int **HW_Grades);
+
     virtual ~Course();
     int getNum() const;
     char* getName() const;
