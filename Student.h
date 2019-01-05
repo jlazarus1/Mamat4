@@ -11,18 +11,23 @@
 
 class Student : public Person:{
 private:
-    Course* EE_C_array[MAX_COURSE_NUM];
+    Course** EE_C_array;
     int EE_C_num;
-    Course* CS_C_array[MAX_COURSE_NUM];
+    Course** CS_C_array;
     int CS_C_num;
 
 public:
     Student();
     ~Student();
     int get_CourseCnt();
-    bool addEE_Course(Course* pEE_C); //TODO check if bool is valid
-    bool addCS_Course(Course* pCS_C);
-    bool remCourse(int c_num);
+
+    int addEE_Course(Course* pEE_C);
+    int addCS_Course(Course* pCS_C);
+    int remCourse(int c_num);
+    Course* getEE_Course (int c_num);
+    Course* getCS_Course (int c_num);
+    int getAvg();
+    void print();
 
 };
 #endif //HW4_STUDENT_H
