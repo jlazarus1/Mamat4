@@ -13,9 +13,8 @@ private:
     static int p_cnt;
 
 public:
-    Person(int id_, char *name_);
-    Person();
-    virtual ~Person(); //contructor
+    Person(int id_, char *name_); //constructor
+    ~Person(); //destructor
     int getID() const ;       //return id
     char *getName() const ;   //return name
     static int get_p_cnt();
