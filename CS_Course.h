@@ -14,7 +14,7 @@ private:
     char* Book_Name;
 
 public:
-    CS_Course(int Course_Num, char Course_Name, int Num_Of_HW, int HW_Weight,bool Is_Takef);
+    CS_Course(int Course_Num, char Course_Name, int Num_Of_HW, int HW_Weight,bool Is_Takef, char* Book_Name);
     bool isTakef() const;
     char* getBook() const;
     int setTakef(bool is_takef);

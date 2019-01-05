@@ -20,7 +20,6 @@ public:
     Student();
     ~Student();
     int get_CourseCnt();
-
     int addEE_Course(Course* pEE_C);
     int addCS_Course(Course* pCS_C);
     int remCourse(int c_num);

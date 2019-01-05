@@ -20,4 +20,7 @@ char* Person ::getName() const {
     return name;
 }
 
-Person :: ~Person() {p_cnt--;}
+Person :: ~Person() {
+    p_cnt--;
+    delete []name;
+}

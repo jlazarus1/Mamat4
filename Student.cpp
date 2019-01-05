@@ -5,16 +5,18 @@
 #include "Student.h"
 
 Student::Student():
-EE_C_num(0), CS_C_num(0) {
-    EE_C_array = new Course*[MAX_COURSE_NUM];
-    CS_C_array = new Course*[MAX_COURSE_NUM];
+Person(), EE_C_num(0), CS_C_num(0), EE_C_array(new Course*[MAX_COURSE_NUM]), CS_C_array(new Course*[MAX_COURSE_NUM]) {}
+
+Student :: ~Student(){
+    delete []EE_C_array;
+    delete []CS_C_num;
 }
 
-Student ::getCoursCnt(){
+int Student ::getCoursCnt(){
     return (EE_C_num + CS_C_num);
 }
 
-Student :: addEE_Course(Course* pEE_C){
+int Student :: addEE_Course(Course* pEE_C) {
     if (EE_C_num > MAX_COURSE_NUM) // The EE_C_num tels where is the next free slot in the array
         return 0;
     EE_C_array[EE_C_num] = pEE_C;
@@ -22,14 +24,15 @@ Student :: addEE_Course(Course* pEE_C){
     return 1;
 }
 
-Student :: addCS_Course(Course* pCS_C){
+int Student :: addCS_Course(Course* pCS_C){
     if (CS_C_num > MAX_COURSE_NUM) // Same like EE_C_num
         return 0;
     CS_C_array[CS_C_num] = pCS_C;
     CS_C_num++;
+    return 1;
 }
 
-Student :: remCourse(int c_num){
+int Student :: remCourse(int c_num){
     if ((EE_C_num + CS_C_num)==0)
         return 0;
     int i ,k;
@@ -61,7 +64,7 @@ Student :: remCourse(int c_num){
     return 0;
 }
 
-Student :: getEE_Course (int c_num){
+Course* Student :: getEE_Course (int c_num){
     if ((EE_C_num==0)
         return NULL;
     int i;
@@ -73,7 +76,7 @@ Student :: getEE_Course (int c_num){
     return NULL;
 }
 
-Student :: getCS_Course (int c_num){
+Course* Student :: getCS_Course (int c_num){
     if ((CS_C_num==0)
         return NULL;
     int i;
@@ -85,7 +88,7 @@ Student :: getCS_Course (int c_num){
     return NULL;
 }
 
-Student :: getAvg(){
+int Student :: getAvg(){
     int course_num = EE_C_num + CS_C_num;
     if (course_num == 0)
         return -1;
@@ -101,7 +104,7 @@ Student :: getAvg(){
     return (average_grade = round(sum_grades/course_num));
 }
 
-Student :: print(){
+void Student :: print(){
     if (this->getAvg < 0) {
         printf("No courses taken");
         return;
