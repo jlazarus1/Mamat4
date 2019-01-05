@@ -6,14 +6,12 @@
 #include <cmath>
 #include "Course.h"
 
-Course::Course(int Num, char Name) {
-
-}
 
 Course::Course(int Course_Num, char *Course_Name, int Num_Of_HW, int HW_Weight):
 Number(Course_Num),Num_Of_HW(Num_Of_HW),HW_weight(HW_Weight){
-    Size_Of_Name = strlen(Course_Name);
-    Name = new char[Size_Of_Name+1];
+    int tmp;
+    tmp = strlen(Course_Name);
+    Name = new char[tmp+1];
     strcpy(Name,Course_Name);
     HW_Grades = new int[Num_Of_HW];
 

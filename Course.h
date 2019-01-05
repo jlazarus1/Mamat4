@@ -15,7 +15,6 @@ char *Name;
 int Num_Of_HW;
 float HW_weight;
 int Exam_Grade;
-int Size_Of_Name;
 int *HW_Grades;
 
 public:
@@ -32,7 +31,7 @@ public:
     int getHwNum() const;
     float getHwWeigh() const;
     float getHwAverage() const;
-    int getCourseGrade() const;
+    virtual int getCourseGrade() const;
     bool setExamGrade(int Grade);
     bool setHwGrade(int HW, int Grade);
 
