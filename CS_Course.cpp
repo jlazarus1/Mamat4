@@ -26,8 +26,6 @@ char* CS_Course::getBook() const {
     Book_Name_return = new char[size+1];
     strcpy(Book_Name_return,Book_Name);
     return Book_Name_return;
-
-
 }
 
 int CS_Course::setTakef(bool is_takef) {
@@ -57,5 +55,11 @@ int CS_Course::getCourseGrade() const {
                      return tmp;
                  else return getHwAverage();
 
+
+}
+
+CS_Course::~CS_Course() {
+
+    delete Book_Name;
 
 }

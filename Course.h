@@ -21,7 +21,6 @@ public:
 
     Course(int Course_Num, char *Course_Name, int Num_Of_HW, int HW_Weight);
 
-    Course(int **HW_Grades);
 
     virtual ~Course();
     int getNum() const;

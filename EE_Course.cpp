@@ -27,7 +27,7 @@ int EE_Course::getCourseGrade() const {
 
     int grade=0;
 
-    grade=round((1-getHwWeigh())*getExamGrade() + getHwWeigh()*getHwAverage())+getFactor();
+    grade=((1-getHwWeigh())*getExamGrade() + getHwWeigh()*getHwAverage())+0.5+getFactor();
 
     if (grade>=100) return 100;
     else return grade;
