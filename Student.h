@@ -9,7 +9,8 @@
 #include "Course.h"
 #include "Proj.h"
 
-class Student : public Person:{
+class Student : public Person {
+
 private:
     Course** EE_C_array;
     int EE_C_num;
@@ -17,7 +18,7 @@ private:
     int CS_C_num;
 
 public:
-    Student();
+    Student(int id_, char *name_);
     ~Student();
     int get_CourseCnt();
     int addEE_Course(Course* pEE_C);

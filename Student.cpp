@@ -1,18 +1,19 @@
 //
 // Created by Or David on 05/01/2019.
 //
-
+#include <iostream>
 #include "Student.h"
+#include "Person.h"
 
-Student::Student():
-Person(), EE_C_num(0), CS_C_num(0), EE_C_array(new Course*[MAX_COURSE_NUM]), CS_C_array(new Course*[MAX_COURSE_NUM]) {}
+Student::Student(int id_, char *name_):
+Person(id_, name_), EE_C_num(0), CS_C_num(0), EE_C_array(new Course*[MAX_COURSE_NUM]), CS_C_array(new Course*[MAX_COURSE_NUM]) {}
 
 Student :: ~Student(){
     delete []EE_C_array;
-    delete []CS_C_num;
+    delete []CS_C_array;
 }
 
-int Student ::getCoursCnt(){
+int Student :: get_CourseCnt(){
     return (EE_C_num + CS_C_num);
 }
 
@@ -65,7 +66,7 @@ int Student :: remCourse(int c_num){
 }
 
 Course* Student :: getEE_Course (int c_num){
-    if ((EE_C_num==0)
+    if (EE_C_num==0)
         return NULL;
     int i;
     for (i=0 ; i<EE_C_num ; i++) {
@@ -77,7 +78,7 @@ Course* Student :: getEE_Course (int c_num){
 }
 
 Course* Student :: getCS_Course (int c_num){
-    if ((CS_C_num==0)
+    if (CS_C_num==0)
         return NULL;
     int i;
     for (i=0 ; i<CS_C_num ; i++) {
@@ -93,7 +94,7 @@ int Student :: getAvg(){
     if (course_num == 0)
         return -1;
 
-    int sum_grades = 0;
+    int i, sum_grades = 0;
     for (i=0 ; i<EE_C_num ; i++){
         sum_grades = sum_grades + EE_C_array[i]->getCourseGrade();
     }
@@ -101,21 +102,21 @@ int Student :: getAvg(){
         sum_grades = sum_grades + CS_C_array[i]->getCourseGrade();
     }
 
-    return (average_grade = round(sum_grades/course_num));
+    return (int(0.5+(sum_grades/course_num)));
 }
 
 void Student :: print(){
-    if (this->getAvg < 0) {
+    if (getAvg() < 0) {
         printf("No courses taken");
         return;
     }
-    printf("Student name: %s\nStudent ID: %d\nAverage grade: %d\n", this->getName , this->getID , this->getAvg);
+    std::cout << "Student name: "<<getName()<<"\nStudent ID: "<<getID()<<"\nAverage grade: getAvg()\n";
     int i;
-    printf("EE courses:\n");
+    std::cout<<"EE courses:\n";
     for (i=0 ; i<EE_C_num ; i++){
         printf("%d %s %d\n", EE_C_array[i]->getNum(), EE_C_array[i]->getName(), EE_C_array[i]->getCourseGrade());
     }
-    printf("CS courses:\n")
+    std::cout<<"CS courses:\n";
     for (i=0 ; i<CS_C_num ; i++){
         printf("%d %s %d\n", CS_C_array[i]->getNum(), CS_C_array[i]->getName(), CS_C_array[i]->getCourseGrade());
     }

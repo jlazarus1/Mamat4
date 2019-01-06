@@ -15,6 +15,7 @@ using std::endl;
 
 int main() {
 
+
 	///// parser //////////////////////
   char szLine[MAX_LINE_SIZE];
   const char* delimiters = " \t\n\r";
@@ -143,5 +144,4 @@ int main() {
   }
 
   return 0;
-
 }

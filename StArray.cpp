@@ -4,8 +4,6 @@
 
 #include "StArray.h"
 #include "Course.h"
-#include "EE_Course.h"
-#include "CS_Course.h"
 #include "Person.h"
 #include "Student.h"
 
@@ -46,7 +44,6 @@ int addCS_Course(int s_id, int c_num, char* c_name, int hw_num, int hw_weight, i
     int i;
     for (i=0 ; i<S_num ; i++){
         if (pS_array[i]->getID()==s_id){
-            ;
             if (pS_array[i]->addCS_Course(new CS_Course(c_num, c_name, hw_num, hw_weight, isTkf, b_name)) == 0)
                 return 0;
             return 1;
@@ -55,3 +52,29 @@ int addCS_Course(int s_id, int c_num, char* c_name, int hw_num, int hw_weight, i
     return 0;
 }
 
+int setHwGrade(int s_id, int c_num, int hw_num, int hw_grd){
+    if (S_num <= 0)
+        return 0;
+    int i;
+    Course* courseHW;
+    for (i=0 ; i<S_num ; i++){
+        if (pS_array[i]->getID()==s_id){
+            courseHW = pS_array[i]->getEE_Course(c_num);
+            if(courseHW != NULL){
+                courseHW->setHwGrade(hw_num, hw_grd);
+                return 1;
+            }
+            courseHW = pS_array[i]->getCS_Course(c_num);
+            if(courseHW != NULL){
+                courseHW->setHwGrade(hw_num, hw_grd);
+                return 1;
+            }
+            return 0;
+        }
+    }
+    return 0;
+}
+
+int setExamGrade(int s_id, int c_num, int t_grd){
+
+}
