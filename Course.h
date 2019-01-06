@@ -19,7 +19,7 @@ int *HW_Grades;
 
 public:
 
-    Course(int Course_Num, char Course_Name, int Num_Of_HW, int HW_Weight);
+    Course(int Course_Num, char *Course_Name, int Num_Of_HW, int HW_Weight);
 
     Course(int **HW_Grades);
 
@@ -33,7 +33,7 @@ public:
     float getHwAverage() const;
     virtual int getCourseGrade() const;
     bool setExamGrade(int Grade);
-    bool setHwGrade(int HW, int Grade);
+    bool setHwGrade(int &HW, int Grade);
 
 
 };

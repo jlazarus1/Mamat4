@@ -4,9 +4,9 @@
 
 #ifndef HW4_CS_COURSE_H
 #define HW4_CS_COURSE_H
+#include "Course.h"
 
-
-class CS_Course {
+class CS_Course: public Course {
 
 private:
 
@@ -14,7 +14,7 @@ private:
     char* Book_Name;
 
 public:
-    CS_Course(int Course_Num, char Course_Name, int Num_Of_HW, int HW_Weight,bool Is_Takef, char* Book_Name);
+    CS_Course(int Course_Num, char *Course_Name, int Num_Of_HW, int HW_Weight,bool Is_Takef, char* Book_Name);
     bool isTakef() const;
     char* getBook() const;
     int setTakef(bool is_takef);

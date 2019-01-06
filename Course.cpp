@@ -34,8 +34,12 @@ int Course::getNum() const {
 }
 
 char* Course::getName() const {
-
-    return Name;
+    int size;
+    char* Name_return;
+    size = strlen(Name);
+    Name_return = new char[size+1];
+    strcpy(Name_return,Name);
+        return Name_return;
 }
 
 int Course::getExamGrade() const {
@@ -86,7 +90,7 @@ bool Course::setExamGrade(int Grade) {
 
 }
 
-bool Course::setHwGrade(int HW, int Grade) {
+bool Course::setHwGrade(int &HW, int Grade) {
 
     return HW_Grades[HW]=Grade;  //TODO: not sure if this will work, need to check
 
