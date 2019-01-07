@@ -4,12 +4,22 @@
 #include <iostream>
 #include "Student.h"
 #include "Person.h"
+#include "Course.h"
+#include "EE_Course.h"
+#include "CS_Course.h"
 
 Student::Student(int id_, char *name_):
 Person(id_, name_), EE_C_num(0), CS_C_num(0), EE_C_array(new Course*[MAX_COURSE_NUM]), CS_C_array(new Course*[MAX_COURSE_NUM]) {}
 
 Student :: ~Student(){
+    for(int i=0 ; i<EE_C_num ; i++){ //going through all EE courses first and calling their destructor
+        EE_C_array[i] -> ~Course();
+    }
     delete []EE_C_array;
+
+    for(int i=0 ; i<EE_C_num ; i++){ //going through all CS courses first and calling their destructor
+        CS_C_array[i] -> ~Course();
+    }
     delete []CS_C_array;
 }
 
@@ -34,10 +44,10 @@ int Student :: addCS_Course(Course* pCS_C){
 }
 
 int Student :: remCourse(int c_num){
-    if ((EE_C_num + CS_C_num)==0)
+    if (get_CourseCnt()==0)
         return 0;
     int i ,k;
-    for (i=0 ; i<EE_C_num ; i++){
+    for (i=0 ; i<EE_C_num ; i++){ // going through all courses and try to find the right course number
         if (EE_C_array[i]->getNum() == c_num){
             EE_C_array[i]->~Course();
             EE_C_num--;
@@ -65,32 +75,32 @@ int Student :: remCourse(int c_num){
     return 0;
 }
 
-Course* Student :: getEE_Course (int c_num){
+EE_Course* Student :: getEE_Course (int c_num){
     if (EE_C_num==0)
-        return NULL;
+        return nullptr;
     int i;
     for (i=0 ; i<EE_C_num ; i++) {
         if (EE_C_array[i]->getNum() == c_num) {
-            return EE_C_array[i];
+            return (dynamic_cast<EE_Course*> (EE_C_array[i]));
         }
     }
-    return NULL;
+    return nullptr;
 }
 
-Course* Student :: getCS_Course (int c_num){
+CS_Course* Student :: getCS_Course (int c_num){
     if (CS_C_num==0)
-        return NULL;
+        return nullptr;
     int i;
     for (i=0 ; i<CS_C_num ; i++) {
         if (CS_C_array[i]->getNum() == c_num) {
-            return CS_C_array[i];
+            return (dynamic_cast<CS_Course*> (CS_C_array[i]));
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 int Student :: getAvg(){
-    int course_num = EE_C_num + CS_C_num;
+    int course_num = get_CourseCnt();
     if (course_num == 0)
         return -1;
 
@@ -114,11 +124,10 @@ void Student :: print(){
     int i;
     std::cout<<"EE courses:\n";
     for (i=0 ; i<EE_C_num ; i++){
-        printf("%d %s %d\n", EE_C_array[i]->getNum(), EE_C_array[i]->getName(), EE_C_array[i]->getCourseGrade());
+        std::cout << EE_C_array[i]->getNum()<<" "<<EE_C_array[i]->getName()<<" "<<EE_C_array[i]->getCourseGrade()<<"\n";
     }
     std::cout<<"CS courses:\n";
     for (i=0 ; i<CS_C_num ; i++){
-        printf("%d %s %d\n", CS_C_array[i]->getNum(), CS_C_array[i]->getName(), CS_C_array[i]->getCourseGrade());
+        std::cout << CS_C_array[i]->getNum()<<" "<<CS_C_array[i]->getName()<<" "<<CS_C_array[i]->getCourseGrade()<<"\n";
     }
-    return;
 }

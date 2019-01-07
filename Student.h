@@ -7,6 +7,8 @@
 
 #include "Person.h"
 #include "Course.h"
+#include "EE_Course.h"
+#include "CS_Course.h"
 #include "Proj.h"
 
 class Student : public Person {
@@ -24,8 +26,8 @@ public:
     int addEE_Course(Course* pEE_C);
     int addCS_Course(Course* pCS_C);
     int remCourse(int c_num);
-    Course* getEE_Course (int c_num);
-    Course* getCS_Course (int c_num);
+    EE_Course* getEE_Course (int c_num);
+    CS_Course* getCS_Course (int c_num);
     int getAvg();
     void print();
 

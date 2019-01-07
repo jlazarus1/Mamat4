@@ -4,18 +4,32 @@
 
 #include "StArray.h"
 #include "Course.h"
+#include "EE_Course.h"
+#include "CS_Course.h"
 #include "Person.h"
 #include "Student.h"
+
+int find_student_index (int s_id, Student** pS, int S_num){
+    if (S_num <= 0)
+        return -1;
+    int i;
+    for (i=0 ; i<S_num ; i++) {
+        if (pS[i]->getID() == s_id)
+            return i;
+    }
+    return -1;
+}
 
 StArray ::StArray():
 S_num(0), pS_array(new Student*[MAX_STUDENT_NUM]){
     int i;
     for (i=0 ; i<MAX_STUDENT_NUM ; i++){
-        pS_array[i]=NULL;
+        pS_array[i]= nullptr;
     }
 }
 
 StArray ::~StArray() {
+    resetStArray();
     delete []pS_array;
 }
 
@@ -38,7 +52,7 @@ int StArray ::addEE_Course(int s_id, int c_num, char *c_name, int hw_num, int hw
     return 0;
 }
 
-int addCS_Course(int s_id, int c_num, char* c_name, int hw_num, int hw_weight, int isTkf, char* b_name){
+int StArray :: addCS_Course(int s_id, int c_num, char* c_name, int hw_num, int hw_weight, bool isTkf, char* b_name){
     if (S_num <= 0)
         return 0;
     int i;
@@ -52,29 +66,56 @@ int addCS_Course(int s_id, int c_num, char* c_name, int hw_num, int hw_weight, i
     return 0;
 }
 
-int setHwGrade(int s_id, int c_num, int hw_num, int hw_grd){
-    if (S_num <= 0)
+int StArray :: setHwGrade(int s_id, int c_num, int hw_num, int hw_grd){
+    int i = find_student_index(s_id, pS_array, S_num);
+    if (i<0)
         return 0;
-    int i;
     Course* courseHW;
-    for (i=0 ; i<S_num ; i++){
-        if (pS_array[i]->getID()==s_id){
-            courseHW = pS_array[i]->getEE_Course(c_num);
-            if(courseHW != NULL){
-                courseHW->setHwGrade(hw_num, hw_grd);
-                return 1;
-            }
-            courseHW = pS_array[i]->getCS_Course(c_num);
-            if(courseHW != NULL){
-                courseHW->setHwGrade(hw_num, hw_grd);
-                return 1;
-            }
-            return 0;
-        }
+    courseHW = pS_array[i]->getEE_Course(c_num);
+    if(courseHW != nullptr){
+        courseHW->setHwGrade(hw_num, hw_grd);
+        return 1;
+    }
+    courseHW = pS_array[i]->getCS_Course(c_num);
+    if(courseHW != nullptr){
+        courseHW->setHwGrade(hw_num, hw_grd);
+        return 1;
     }
     return 0;
 }
 
-int setExamGrade(int s_id, int c_num, int t_grd){
+int StArray :: setExamGrade(int s_id, int c_num, int exam_grd){
+    int i = find_student_index(s_id, pS_array, S_num);
+    if (i<0)
+        return 0;
+    Course* courseHW;
 
+    courseHW = pS_array[i]->getEE_Course(c_num);
+    if(courseHW != nullptr){
+        courseHW->setExamGrade(exam_grd);
+        return 1;
+    }
+    courseHW = pS_array[i]->getCS_Course(c_num);
+    if(courseHW != nullptr){
+        courseHW->setExamGrade(exam_grd);
+        return 1;
+    }
+    return 0;
+}
+
+int StArray :: printStudent(int s_id){
+    int i = find_student_index(s_id, pS_array, S_num);
+    pS_array[i]->print();
+}
+
+void StArray :: printAll(){
+    for(int i=0 ; i<S_num ; i++){
+        pS_array[i]->print();
+    }
+}
+
+void StArray :: resetStArray(){
+    for(int i=0 ; i<S_num ; i++){
+        pS_array[i]-> ~Student();
+    }
 }
