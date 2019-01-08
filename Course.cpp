@@ -59,14 +59,14 @@ int Course::getHwNum() const {
     return Num_Of_HW;
 }
 
-float Course::getHwWeigh() const {
+double Course::getHwWeigh() const {
 
     return HW_weight;
 
 }
 
 
-float Course::getHwAverage() const {
+double Course::getHwAverage() const {
 
     int tmp=0;
     int i=0;
@@ -81,17 +81,25 @@ float Course::getHwAverage() const {
 int Course::getCourseGrade() const {
 
 
-    return round((1-HW_weight)*Exam_Grade + HW_weight*getHwAverage());
+    return round((1 - HW_weight) * Exam_Grade + HW_weight * getHwAverage());
 }
 
 bool Course::setExamGrade(int Grade) {
 
-    return Exam_Grade=Grade;        //TODO: not sure if this will work, need to check
 
+    Exam_Grade=Grade;
+    if (Exam_Grade==Grade)
+        return true;
+    else
+        return false;
 }
 
 bool Course::setHwGrade(int &HW, int Grade) {
 
-    return HW_Grades[HW]=Grade;  //TODO: not sure if this will work, need to check
+    if (HW<getHwNum()) {
 
+        HW_Grades[HW] = Grade;
+        return true;
+    }
+    else return false;
 }
