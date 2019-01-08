@@ -18,7 +18,7 @@ Student :: ~Student(){
     }
     delete []EE_C_array;
 
-    for(int i=0 ; i<EE_C_num ; i++){ //going through all CS courses first and calling their destructor
+    for(int i=0 ; i<CS_C_num ; i++){ //going through all CS courses first and calling their destructor
         CS_C_array[i] -> ~Course();
     }
     delete []CS_C_array;

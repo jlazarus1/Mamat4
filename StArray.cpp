@@ -30,8 +30,10 @@ S_num(0), pS_array(new Student*[MAX_STUDENT_NUM]){
 }
 
 StArray ::~StArray() {
+    int i;
     resetStArray();
-    delete []pS_array;
+    for (i=0;i<S_num;i++)
+        delete pS_array[i];
 }
 
 int StArray ::addStudent(int s_id, char *s_name) {

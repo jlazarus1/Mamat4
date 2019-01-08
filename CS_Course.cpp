@@ -8,7 +8,7 @@
 
 
 CS_Course::CS_Course(int Course_Num, char *Course_Name, int Num_Of_HW, double HW_Weight, bool Is_Takef, char *Book_Name):
-Course(Course_Num,Course_Name,Num_Of_HW,HW_Weight), Is_Takef(Is_Takef), Book_Name(Book_Name){
+Course(Course_Num,Course_Name,Num_Of_HW,HW_Weight), Is_Takef(Is_Takef) {
 
     int tmp;
     tmp = strlen(Book_Name);
