@@ -10,6 +10,7 @@
 #include "EE_Course.h"
 #include "CS_Course.h"
 #include "Proj.h"
+#include "EE_Course.h"
 
 class Student : public Person {
 

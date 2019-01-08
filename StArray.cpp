@@ -119,3 +119,25 @@ void StArray :: resetStArray(){
         pS_array[i]-> ~Student();
     }
 }
+
+int StArray::setFactor(int c_num, int factor) {
+
+    int i;
+
+    for (i=0;i<S_num;i++)
+    {
+
+      if  (pS_array[i]->getEE_Course(c_num)!= nullptr)
+      {
+          pS_array[i]->getEE_Course(c_num)->setFactor(factor);
+          return 1;
+      }
+      else return 0;
+
+    }
+
+
+    return 0;
+}
+
+

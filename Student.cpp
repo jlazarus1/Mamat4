@@ -131,3 +131,4 @@ void Student :: print(){
         std::cout << CS_C_array[i]->getNum()<<" "<<CS_C_array[i]->getName()<<" "<<CS_C_array[i]->getCourseGrade()<<"\n";
     }
 }
+
