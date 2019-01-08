@@ -29,7 +29,7 @@ int Student :: get_CourseCnt(){
 }
 
 int Student :: addEE_Course(Course* pEE_C) {
-    if (EE_C_num > MAX_COURSE_NUM) // The EE_C_num tels where is the next free slot in the array
+    if (EE_C_num > MAX_COURSE_NUM) // The EE_C_num tells where is the next free slot in the array
         return 0;
     EE_C_array[EE_C_num] = pEE_C;
     EE_C_num++;
@@ -103,7 +103,7 @@ CS_Course* Student :: getCS_Course (int c_num){
 int Student :: getAvg(){
     int course_num = get_CourseCnt();
     if (course_num == 0)
-        return -1;
+        return 0;
 
     int i, sum_grades = 0;
     for (i=0 ; i<EE_C_num ; i++){
@@ -112,19 +112,12 @@ int Student :: getAvg(){
     for (i=0 ; i<CS_C_num ; i++){
         sum_grades = sum_grades + CS_C_array[i]->getCourseGrade();
     }
-    if (course_num=='0')
-        return 0;
-    else
     return (round(static_cast<double>(sum_grades)/course_num));
 }
 
 void Student :: print(){
-    if (getAvg() < 0) {
-        printf("No courses taken");
-        return;
-    }
     char * tmp_name=getName();
-    std::cout << "Student name: "<<tmp_name<<"\nStudent ID: "<<getID()<<"\nAverage grade:"<< getAvg()<<"\n";
+    std::cout << "Student name: "<<tmp_name<<"\nStudent ID: "<<getID()<<"\nAverage grade: "<< getAvg()<<"\n";
     std::cout << "\n";
     delete []tmp_name;
     int i;

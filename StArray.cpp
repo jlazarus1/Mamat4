@@ -40,31 +40,21 @@ int StArray ::addStudent(int s_id, char *s_name) {
 }
 
 int StArray ::addEE_Course(int s_id, int c_num, char *c_name, int hw_num, double hw_weight) {
-    if (S_num <= 0)
+    int i = find_student_index(s_id, pS_array, S_num);
+    if (i<0)
         return 0;
-    int i;
-    for (i=0 ; i<S_num ; i++){
-        if (pS_array[i]->getID()==s_id){
             if (pS_array[i]->addEE_Course(new EE_Course(c_num, c_name, hw_num, hw_weight)) == 0)
                 return 0;
             return 1;
-        }
-    }
-    return 0;
 }
 
 int StArray :: addCS_Course(int s_id, int c_num, char* c_name, int hw_num, double hw_weight, bool isTkf, char* b_name){
-    if (S_num <= 0)
+    int i = find_student_index(s_id, pS_array, S_num);
+    if (i<0)
         return 0;
-    int i;
-    for (i=0 ; i<S_num ; i++){
-        if (pS_array[i]->getID()==s_id){
-            if (pS_array[i]->addCS_Course(new CS_Course(c_num, c_name, hw_num, hw_weight, isTkf, b_name)) == 0)
-                return 0;
-            return 1;
-        }
-    }
-    return 0;
+    if (pS_array[i]->addCS_Course(new CS_Course(c_num, c_name, hw_num, hw_weight, isTkf, b_name)) == 0)
+        return 0;
+    return 1;
 }
 
 int StArray :: setHwGrade(int s_id, int c_num, int hw_num, int hw_grd){
@@ -124,7 +114,7 @@ void StArray :: resetStArray(){
 
 int StArray::setFactor(int c_num, int factor) {
 
-    int i;
+    int i, success=0;
 
     for (i=0;i<S_num;i++)
     {
@@ -132,13 +122,10 @@ int StArray::setFactor(int c_num, int factor) {
       if  (pS_array[i]->getEE_Course(c_num)!= nullptr)
       {
           pS_array[i]->getEE_Course(c_num)->setFactor(factor);
-          return 1;
+          success=1;
       }
-      else return 0;
-
     }
-
-
+    if (success) return 1;
     return 0;
 }
 

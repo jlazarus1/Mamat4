@@ -52,13 +52,12 @@ bool CS_Course::setBook(char *Book) {
 int CS_Course::getCourseGrade() const {
     int tmp;
     tmp=round((1-getHwWeigh())*getExamGrade()+getHwWeigh()*getHwAverage());
-    if (Is_Takef==true)
+    if (Is_Takef)
         return tmp;
     else
-
-                 if (tmp>getExamGrade())
-                     return tmp;
-                 else return getExamGrade();
+        if (tmp>getExamGrade())
+            return tmp;
+        else return getExamGrade();
 
 
 }
