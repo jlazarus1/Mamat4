@@ -2,6 +2,7 @@
 // Created by Or David on 05/01/2019.
 //
 
+#include <iostream>
 #include "StArray.h"
 #include "Course.h"
 #include "EE_Course.h"
@@ -111,6 +112,7 @@ int StArray :: printStudent(int s_id){
 void StArray :: printAll(){
     for(int i=0 ; i<S_num ; i++){
         pS_array[i]->print();
+
     }
 }
 

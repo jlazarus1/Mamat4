@@ -4,6 +4,7 @@
 
 #include <cstring>
 #include <cmath>
+#include <iostream>
 #include "Course.h"
 
 
@@ -74,8 +75,10 @@ double Course::getHwAverage() const {
     for (i=0;i<Num_Of_HW; i++){
         tmp+=HW_Grades[i];
     }
-
-    return ((float)tmp)/((float)Num_Of_HW);
+    if (Num_Of_HW==0)
+        return 0;
+    else
+    return ((double)tmp)/((double)Num_Of_HW);
 }
 
 int Course::getCourseGrade() const {
@@ -95,9 +98,7 @@ bool Course::setExamGrade(int Grade) {
 }
 
 bool Course::setHwGrade(int &HW, int Grade) {
-
     if (HW<getHwNum()) {
-
         HW_Grades[HW] = Grade;
         return true;
     }

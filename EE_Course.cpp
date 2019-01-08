@@ -4,6 +4,7 @@
 
 #include <cstring>
 #include <cmath>
+#include <iostream>
 #include "EE_Course.h"
 
 EE_Course::EE_Course(int Course_Num, char *Course_Name, int Num_Of_HW, int HW_Weight):
@@ -27,8 +28,7 @@ int EE_Course::getCourseGrade() const {
 
     int grade=0;
 
-    grade=((1-getHwWeigh())*getExamGrade() + getHwWeigh()*getHwAverage())+0.5+getFactor();
-
+    grade=round((1-getHwWeigh())*getExamGrade() + getHwWeigh()*getHwAverage())+getFactor();
     if (grade>=100) return 100;
     else return grade;
 
