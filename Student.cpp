@@ -120,7 +120,7 @@ void Student :: print(){
         printf("No courses taken");
         return;
     }
-    std::cout << "Student name: "<<getName()<<"\nStudent ID: "<<getID()<<"\nAverage grade: getAvg()\n";
+    std::cout << "Student name: "<<getName()<<"\nStudent ID: "<<getID()<<"\nAverage grade:"<< getAvg()<<"\n";
     int i;
     std::cout<<"EE courses:\n";
     for (i=0 ; i<EE_C_num ; i++){
