@@ -19,7 +19,7 @@ int *HW_Grades;
 
 public:
 
-    Course(int Course_Num, char *Course_Name, int Num_Of_HW, int HW_Weight);
+    Course(int Course_Num, char *Course_Name, int Num_Of_HW, double HW_Weight);
 
 
     virtual ~Course();

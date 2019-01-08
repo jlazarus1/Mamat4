@@ -8,7 +8,7 @@
 #include "Course.h"
 
 
-Course::Course(int Course_Num, char *Course_Name, int Num_Of_HW, int HW_Weight):
+Course::Course(int Course_Num, char *Course_Name, int Num_Of_HW, double HW_Weight):
 Number(Course_Num),Num_Of_HW(Num_Of_HW),HW_weight(HW_Weight){
     int tmp;
     tmp = strlen(Course_Name);
@@ -78,7 +78,7 @@ double Course::getHwAverage() const {
     if (Num_Of_HW==0)
         return 0;
     else
-    return ((double)tmp)/((double)Num_Of_HW);
+    return ((double)tmp/(double)Num_Of_HW);
 }
 
 int Course::getCourseGrade() const {

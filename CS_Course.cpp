@@ -7,7 +7,7 @@
 #include "CS_Course.h"
 
 
-CS_Course::CS_Course(int Course_Num, char *Course_Name, int Num_Of_HW, int HW_Weight, bool Is_Takef, char *Book_Name):
+CS_Course::CS_Course(int Course_Num, char *Course_Name, int Num_Of_HW, double HW_Weight, bool Is_Takef, char *Book_Name):
 Course(Course_Num,Course_Name,Num_Of_HW,HW_Weight), Is_Takef(Is_Takef), Book_Name(Book_Name){
 
     int tmp;
@@ -51,7 +51,7 @@ bool CS_Course::setBook(char *Book) {
 
 int CS_Course::getCourseGrade() const {
     int tmp;
-    tmp=0.5+((1-getHwWeigh())*getExamGrade()+getHwWeigh()*getHwAverage());
+    tmp=round((1-getHwWeigh())*getExamGrade()+getHwWeigh()*getHwAverage());
     if (Is_Takef==true)
         return tmp;
     else

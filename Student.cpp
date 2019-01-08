@@ -2,6 +2,7 @@
 // Created by Or David on 05/01/2019.
 //
 #include <iostream>
+#include <cmath>
 #include "Student.h"
 #include "Person.h"
 #include "Course.h"
@@ -114,7 +115,7 @@ int Student :: getAvg(){
     if (course_num=='0')
         return 0;
     else
-    return (int(0.5+(sum_grades/course_num)));
+    return (round(static_cast<double>(sum_grades)/course_num));
 }
 
 void Student :: print(){
@@ -122,18 +123,24 @@ void Student :: print(){
         printf("No courses taken");
         return;
     }
-    std::cout << "Student name: "<<getName()<<"\nStudent ID: "<<getID()<<"\nAverage grade:"<< getAvg()<<"\n";
+    char * tmp_name=getName();
+    std::cout << "Student name: "<<tmp_name<<"\nStudent ID: "<<getID()<<"\nAverage grade:"<< getAvg()<<"\n";
     std::cout << "\n";
+    delete []tmp_name;
     int i;
     std::cout<<"EE courses:\n";
     for (i=0 ; i<EE_C_num ; i++){
-        std::cout << EE_C_array[i]->getNum()<<" "<<EE_C_array[i]->getName()<<": "<<EE_C_array[i]->getCourseGrade()<<"\n";
-        std::cout << "\n";
+        char * tmp_course_name=EE_C_array[i]->getName();
+        std::cout << EE_C_array[i]->getNum()<<" "<<tmp_course_name<<": "<<EE_C_array[i]->getCourseGrade()<<"\n";
+        delete []tmp_course_name;
     }
+    std::cout << "\n";
     std::cout<<"CS courses:\n";
     for (i=0 ; i<CS_C_num ; i++){
-        std::cout << CS_C_array[i]->getNum()<<" "<<CS_C_array[i]->getName()<<": "<<CS_C_array[i]->getCourseGrade()<<"\n";
-        std::cout << "\n";
+        char * tmp_course_name2=CS_C_array[i]->getName();
+        std::cout << CS_C_array[i]->getNum()<<" "<<tmp_course_name2<<": "<<CS_C_array[i]->getCourseGrade()<<"\n";
+        delete []tmp_course_name2;
     }
+    std::cout << "\n";
 }
 

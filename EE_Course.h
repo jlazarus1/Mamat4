@@ -14,7 +14,7 @@ private:
     int Factor;
 
 public:
-    EE_Course(int Course_Num, char *Course_Name, int Num_Of_HW, int HW_Weight);
+    EE_Course(int Course_Num, char *Course_Name, int Num_Of_HW, double HW_Weight);
     int getFactor() const;
     bool setFactor(int Fact);
     int getCourseGrade() const;

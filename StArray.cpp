@@ -39,7 +39,7 @@ int StArray ::addStudent(int s_id, char *s_name) {
     S_num++;
 }
 
-int StArray ::addEE_Course(int s_id, int c_num, char *c_name, int hw_num, int hw_weight) {
+int StArray ::addEE_Course(int s_id, int c_num, char *c_name, int hw_num, double hw_weight) {
     if (S_num <= 0)
         return 0;
     int i;
@@ -53,7 +53,7 @@ int StArray ::addEE_Course(int s_id, int c_num, char *c_name, int hw_num, int hw
     return 0;
 }
 
-int StArray :: addCS_Course(int s_id, int c_num, char* c_name, int hw_num, int hw_weight, bool isTkf, char* b_name){
+int StArray :: addCS_Course(int s_id, int c_num, char* c_name, int hw_num, double hw_weight, bool isTkf, char* b_name){
     if (S_num <= 0)
         return 0;
     int i;
