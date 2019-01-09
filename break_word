@@ -1,0 +1,18 @@
+#!/bin/bash
+#function name - break_word
+#Description - the script recieves a string as a parameter and prints it's letters each in its own row.
+#Parameters - Param 1 = string
+#return value - VOID
+################################################################################
+
+if (($# != 1)); then
+	echo "Usage: break_word string_name"
+	exit 1; 
+else 
+	     echo $1 > tmp
+	     grep -o . tmp
+	     echo $1 | grep -o .
+	     rm tmp
+
+fi
+
