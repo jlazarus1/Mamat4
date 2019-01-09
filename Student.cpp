@@ -31,6 +31,7 @@ int Student :: get_CourseCnt(){
 int Student :: addEE_Course(Course* pEE_C) {
     if (EE_C_num > MAX_COURSE_NUM) // The EE_C_num tells where is the next free slot in the array
         return 0;
+    remCourse(pEE_C->getNum());
     EE_C_array[EE_C_num] = pEE_C;
     EE_C_num++;
     return 1;
@@ -39,6 +40,7 @@ int Student :: addEE_Course(Course* pEE_C) {
 int Student :: addCS_Course(Course* pCS_C){
     if (CS_C_num > MAX_COURSE_NUM) // Same like EE_C_num
         return 0;
+    remCourse(pCS_C->getNum());
     CS_C_array[CS_C_num] = pCS_C;
     CS_C_num++;
     return 1;
@@ -50,7 +52,7 @@ int Student :: remCourse(int c_num){
     int i ,k;
     for (i=0 ; i<EE_C_num ; i++){ // going through all courses and try to find the right course number
         if (EE_C_array[i]->getNum() == c_num){
-            EE_C_array[i]->~Course();
+            delete EE_C_array[i];
             EE_C_num--;
             if (i == EE_C_num)
                 return 1;
@@ -63,7 +65,7 @@ int Student :: remCourse(int c_num){
     // doing the same loop for CS
     for (i=0 ; i<CS_C_num ; i++){
         if (CS_C_array[i]->getNum() == c_num){
-            CS_C_array[i]->~Course();
+            delete CS_C_array[i];
             CS_C_num--;
             if (i == CS_C_num)
                 return 1;
@@ -123,14 +125,14 @@ void Student :: print(){
     int i;
     std::cout<<"EE courses:\n";
     for (i=0 ; i<EE_C_num ; i++){
-        char * tmp_course_name=EE_C_array[i]->getName();
+        char * tmp_course_name = EE_C_array[i]->getName();
         std::cout << EE_C_array[i]->getNum()<<" "<<tmp_course_name<<": "<<EE_C_array[i]->getCourseGrade()<<"\n";
         delete []tmp_course_name;
     }
     std::cout << "\n";
     std::cout<<"CS courses:\n";
     for (i=0 ; i<CS_C_num ; i++){
-        char * tmp_course_name2=CS_C_array[i]->getName();
+        char* tmp_course_name2 = CS_C_array[i]->getName();
         std::cout << CS_C_array[i]->getNum()<<" "<<tmp_course_name2<<": "<<CS_C_array[i]->getCourseGrade()<<"\n";
         delete []tmp_course_name2;
     }

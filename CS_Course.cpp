@@ -7,15 +7,18 @@
 #include "CS_Course.h"
 
 
-CS_Course::CS_Course(int Course_Num, char *Course_Name, int Num_Of_HW, double HW_Weight, bool Is_Takef, char *Book_Name):
+CS_Course::CS_Course(int Course_Num, char *Course_Name, int Num_Of_HW, double HW_Weight, bool Is_Takef, char *Book_name):
 Course(Course_Num,Course_Name,Num_Of_HW,HW_Weight), Is_Takef(Is_Takef) {
 
     int tmp;
-    tmp = strlen(Book_Name);
+
+    tmp = strlen(Book_name);
     Book_Name = new char[tmp+1];
-    strcpy(Book_Name,Course_Name);
+    strcpy(Book_Name,Book_name);
 
 }
+
+
 
 bool CS_Course::isTakef() const {
 

@@ -14,9 +14,10 @@ Number(Course_Num),Num_Of_HW(Num_Of_HW),HW_weight(HW_Weight){
     tmp = strlen(Course_Name);
     Name = new char[tmp+1];
     strcpy(Name,Course_Name);
-    HW_Grades = new int[Num_Of_HW];
+    HW_Grades = new int[Num_Of_HW]();
 
 }
+
 
 
 
@@ -98,7 +99,7 @@ bool Course::setExamGrade(int Grade) {
 }
 
 bool Course::setHwGrade(int &HW, int Grade) {
-    if (HW<getHwNum()) {
+    if (HW<getHwNum() && HW>=0) {
         HW_Grades[HW] = Grade;
         return true;
     }

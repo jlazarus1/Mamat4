@@ -54,9 +54,9 @@ int StArray :: addCS_Course(int s_id, int c_num, char* c_name, int hw_num, doubl
     int i = find_student_index(s_id, pS_array, S_num);
     if (i<0)
         return 0;
-    if (pS_array[i]->addCS_Course(new CS_Course(c_num, c_name, hw_num, hw_weight, isTkf, b_name)) == 0)
-        return 0;
-    return 1;
+            if (pS_array[i]->addCS_Course(new CS_Course(c_num, c_name, hw_num, hw_weight, isTkf, b_name) ) == 0)
+                 return 0;
+            return 1;
 }
 
 int StArray :: setHwGrade(int s_id, int c_num, int hw_num, int hw_grd){
