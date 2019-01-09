@@ -11,10 +11,15 @@
 Course::Course(int Course_Num, char *Course_Name, int Num_Of_HW, double HW_Weight):
 Number(Course_Num),Num_Of_HW(Num_Of_HW),HW_weight(HW_Weight){
     int tmp;
+    int i=0;
     tmp = strlen(Course_Name);
     Name = new char[tmp+1];
     strcpy(Name,Course_Name);
-    HW_Grades = new int[Num_Of_HW+1];
+    HW_Grades = new int[Num_Of_HW];
+    for (i=0;i<Num_Of_HW;i++)
+    {
+        HW_Grades[i]=0;
+    }
 
 }
 

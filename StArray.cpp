@@ -35,8 +35,6 @@ StArray ::~StArray() {
     if (pS_array== nullptr) return ;
     resetStArray();
     delete []pS_array;
-  //  for (i=0;i<S_num;i++)
-       // delete pS_array[i];
 }
 
 int StArray ::addStudent(int s_id, char *s_name) {
@@ -124,6 +122,7 @@ void StArray :: resetStArray(){
         delete pS_array[i];
         pS_array[i]=nullptr;
     }
+    S_num=0;
 
 
 

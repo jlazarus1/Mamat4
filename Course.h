@@ -15,7 +15,7 @@ char *Name= nullptr;
 int Num_Of_HW=0;
 double HW_weight=0;
 int Exam_Grade=0;
-int *HW_Grades= nullptr;
+int *HW_Grades= 0;
 
 public:
 
