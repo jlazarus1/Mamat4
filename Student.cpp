@@ -14,12 +14,14 @@ Person(id_, name_), EE_C_num(0), CS_C_num(0), EE_C_array(new Course*[MAX_COURSE_
 
 Student :: ~Student(){
     for(int i=0 ; i<EE_C_num ; i++){ //going through all EE courses first and calling their destructor
-        EE_C_array[i] -> ~Course();
+        delete EE_C_array[i];
+        //EE_C_array[i]->~Course();
     }
     delete []EE_C_array;
 
     for(int i=0 ; i<CS_C_num ; i++){ //going through all CS courses first and calling their destructor
-        CS_C_array[i] -> ~Course();
+        //CS_C_array[i]->~Course();
+        delete CS_C_array[i];
     }
     delete []CS_C_array;
 }

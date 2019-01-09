@@ -15,6 +15,7 @@ int find_student_index (int s_id, Student** pS, int S_num){
         return -1;
     int i;
     for (i=0 ; i<S_num ; i++) {
+        if (pS[i]== nullptr) return -1;
         if (pS[i]->getID() == s_id)
             return i;
     }
@@ -30,10 +31,12 @@ S_num(0), pS_array(new Student*[MAX_STUDENT_NUM]){
 }
 
 StArray ::~StArray() {
-    int i;
+
+    if (pS_array== nullptr) return ;
     resetStArray();
-    for (i=0;i<S_num;i++)
-        delete pS_array[i];
+    delete []pS_array;
+  //  for (i=0;i<S_num;i++)
+       // delete pS_array[i];
 }
 
 int StArray ::addStudent(int s_id, char *s_name) {
@@ -97,21 +100,33 @@ int StArray :: setExamGrade(int s_id, int c_num, int exam_grd){
 }
 
 int StArray :: printStudent(int s_id){
+
     int i = find_student_index(s_id, pS_array, S_num);
+    if (i<0) return 0;
+    if (pS_array[i]== nullptr) return 0;
     pS_array[i]->print();
 }
 
 void StArray :: printAll(){
+    if (pS_array==nullptr)
+        return;
     for(int i=0 ; i<S_num ; i++){
+        if (pS_array[i]== nullptr) return;
         pS_array[i]->print();
 
     }
 }
 
 void StArray :: resetStArray(){
+    if (pS_array== nullptr) return;
+
     for(int i=0 ; i<S_num ; i++){
-        pS_array[i]-> ~Student();
+        delete pS_array[i];
+        pS_array[i]=nullptr;
     }
+
+
+
 }
 
 int StArray::setFactor(int c_num, int factor) {
