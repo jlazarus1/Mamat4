@@ -15,10 +15,11 @@
 class Student : public Person {
 
 private:
+    int EE_C_num;
+    int CS_C_num;
     Course** EE_C_array;
-    int EE_C_num=0;
     Course** CS_C_array;
-    int CS_C_num=0;
+
 
 public:
     Student(int id_, char *name_);

@@ -10,8 +10,9 @@
 
 class StArray{
 private:
-    Student** pS_array;
     int S_num;
+    Student** pS_array;
+
 
 public:
     StArray();

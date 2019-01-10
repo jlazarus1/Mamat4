@@ -20,6 +20,7 @@ Number(Course_Num),Num_Of_HW(Num_Of_HW),HW_weight(HW_Weight){
     {
         HW_Grades[i]=0;
     }
+    Exam_Grade=0;
 
 }
 

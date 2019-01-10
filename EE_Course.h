@@ -11,7 +11,7 @@
 class EE_Course: public Course {
 
 private:
-    int Factor=0;
+    int Factor;
 
 public:
     EE_Course(int Course_Num, char *Course_Name, int Num_Of_HW, double HW_Weight);

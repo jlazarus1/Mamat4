@@ -10,12 +10,12 @@ class Course {
 
 private:
 
-int Number=0;
-char *Name= nullptr;
-int Num_Of_HW=0;
-double HW_weight=0;
-int Exam_Grade=0;
-int *HW_Grades= 0;
+int Number;
+char *Name;
+int Num_Of_HW;
+double HW_weight;
+int Exam_Grade;
+int *HW_Grades;
 
 public:
 

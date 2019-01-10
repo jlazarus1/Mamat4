@@ -82,26 +82,26 @@ int Student :: remCourse(int c_num){
 
 EE_Course* Student :: getEE_Course (int c_num){
     if (EE_C_num==0)
-        return nullptr;
+        return 0;
     int i;
     for (i=0 ; i<EE_C_num ; i++) {
         if (EE_C_array[i]->getNum() == c_num) {
             return (dynamic_cast<EE_Course*> (EE_C_array[i]));
         }
     }
-    return nullptr;
+    return 0;
 }
 
 CS_Course* Student :: getCS_Course (int c_num){
     if (CS_C_num==0)
-        return nullptr;
+        return 0;
     int i;
     for (i=0 ; i<CS_C_num ; i++) {
         if (CS_C_array[i]->getNum() == c_num) {
             return (dynamic_cast<CS_Course*> (CS_C_array[i]));
         }
     }
-    return nullptr;
+    return 0;
 }
 
 int Student :: getAvg(){
